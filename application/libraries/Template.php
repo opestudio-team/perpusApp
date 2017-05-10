@@ -5,22 +5,23 @@
 */
 class Template
 {
-		var $template_data = array();
+		var $template_data = '';
+
+		protected $template = '';
 
 		/*
-			set path Template utama.
-			------------------------
-			Bisa diset ketika proses $this->template->render('path template utama','path konten','data view (optional)', return(bool));
-
-			Jika ingin memanggil template yg berbeda, set parameter $view sama dengan path template utama
-			ie: $this->template->render('login','login');
+			set template utama
+			------------------
+			Gunakan fungsi main ini untuk set template utama jika template yang kamu Gunakan
+			dipecah menjadi beberapa bagian. Jika hanya menggunakan 1 template utuh, cukup
+			panggil template menggunakan render()
 		*/
-		protected $template = 'template/template';
-		protected $js_url = '';
-		protected $css_url 	= '';
+		function main($main){
+			$this->template = $main;
+		}
 
-		function set($name, $value){
-			$this->template_data[$name] = $value;
+		function set($dataset){
+			$this->template_data = $dataset;
 		}
 
 		/*
@@ -38,16 +39,33 @@ class Template
 		}
 
 		/*
-			$template 	= lokasi template utama, isi NULL jika sudah dikonfigurasi di bagian atas script ini 
-			$view 			= lokasi 'contents' view
+			fungsi render() ini harus dipanggil diurutan terakhir ketika hendak load view
+			menggunakan library ini.
+
+			$view = nama 'contents' view.
+							Harap sesuaikan di mana letak view yang akan dipanggil
 		*/
-    function render($template='', $view='', $view_data = array(), $return=FALSE){
+    function render($view='', $return=FALSE){
     	$this->CI =& get_instance();
-    	$this->set('contents', $this->CI->load->view($view, $view_data, TRUE));
-    	if ($template == '' || $template == NULL) {
-    	  	return $this->CI->load->view($this->template, $this->template_data, $return);
+
+			$this->set(
+				$this->template_data += array(
+							'contents'=> $this->CI->load->view($view, $this->template_data, TRUE)
+				)
+			);
+
+			if ($this->template == '' || $this->template == NULL) {
+    	  return $this->CI->load->view(
+											$view,
+											$this->template_data,
+											$return
+										);
 	  	} else {
-	  		return $this->CI->load->view($template, $this->template_data, $return);
+	  		return $this->CI->load->view(
+											$this->template,
+											$this->template_data,
+											$return
+										);
 	  	}
     }
 }
