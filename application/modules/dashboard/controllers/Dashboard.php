@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller{
 
 	function index(){
     $this->template->set('title','Dashboard Template');
-		$this->template->render(NULL,'dashboard_view');
+		$this->template->render('dashboard_view');
 	}
 
 }
