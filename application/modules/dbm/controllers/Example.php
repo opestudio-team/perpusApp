@@ -9,11 +9,13 @@ class Example extends CI_Controller{
 	}
 
   function insert(){
-    $field_name = array('nama','alamat','email');
-    $field_data = array('Alvian','Magetan','alvian@gmail.com');
+    $data = array(
+      'nama_buku' => 'Buku 2',
+      'kode_buku' => 'B0002'
+    );
 
-    $this->dbm->set_table('test');
-    $result = $this->dbm->insert($field_name, $field_data);
+    $this->dbm->set_table('tb_m_buku');
+    $result = $this->dbm->insert($data);
     echo $result;
   }
 
@@ -23,28 +25,39 @@ class Example extends CI_Controller{
   }
 
   function get_where(){
-    $where_field = array('nama','alamat');
-    $field_data = array('Alvian','Magetan');
+    $where_field = array('nama_buku');
+    $field_data = array('Buku 1');
 
     $this->dbm->select('all');
-    $this->dbm->set_table('test');
+    $this->dbm->set_table('tb_m_buku');
     $result = $this->dbm->get_where($where_field, $field_data);
     echo $result;
   }
 
   function get_like(){
-    $where_field = array('nama');
-    $field_data = array('Alvian');
+    $where_field = array('nama_buku');
+    $field_data = array('Buku 1');
 
-    $this->dbm->select("all");
-    $this->dbm->set_table('test');
+    $this->dbm->select("nama_buku,kode_buku");
+    $this->dbm->set_table('tb_m_buku');
     $result = $this->dbm->get_like($where_field, $field_data);
     echo $result;
   }
 
   function update(){
-    $this->dbm->set_table('test');
-    $result = $this->dbm->update(['nama'],['Ope'],array('id'=>1));
+    $this->dbm->set_table('tb_m_buku');
+
+    // where_field
+    $where = array(
+      'id_buku'=>1
+    );
+
+    // data yg mau diupdate
+    $data_update = array(
+      'nama_buku' => 'Buku baru'
+    );
+
+    $result = $this->dbm->update($data_update, $where);
     echo $result;
   }
 
