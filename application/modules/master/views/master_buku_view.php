@@ -1,4 +1,4 @@
 <?php
-  echo $title."<br/>";
-  echo "$tes";
+  // echo $title."<br/>";
+  // echo "$tes";
 ?>
