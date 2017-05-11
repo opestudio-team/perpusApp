@@ -28,6 +28,7 @@ class Login extends CI_Controller
 
 		if ($result_code == 0) {
 			$data_session = array(
+				// 'id_user_'.project => $id_user,
 				'is_login_'.project => TRUE,
 				'jam_login_'.project => date("Y-m-d H:i"),
 				'token_'.project => md5(strrev($username).private_key)
