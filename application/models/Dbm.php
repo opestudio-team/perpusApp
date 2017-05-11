@@ -47,10 +47,9 @@ class Dbm extends CI_Model
 		}
 	}
 
-	function insert($field_name = array(), $field_data = array()){
+	function insert($data = ''){
 		if ($this->check_table_name()) {
-			if (count($field_name) == count($field_data)) {
-				$data = $this->create_array_data($field_name, $field_data);
+			if (!empty($data)) {
 				$this->db->insert($this->table_name, $data);
 				$err_msg = $this->db->error();
 				$result_code = $err_msg['code'];
@@ -68,7 +67,7 @@ class Dbm extends CI_Model
 					)
 				);
 			} else {
-				echo "field_name dan field_data tidak sama!";
+				echo "Tidak ditemukan data yang bisa diinsert!";
 			}
 		} else {
 			$msg = "Nama tabel belum dideklarasikan!<br/>
@@ -170,7 +169,7 @@ class Dbm extends CI_Model
 			if ($this->select != "") {
 				$sql = "SELECT $this->select FROM $this->table_name WHERE ";
 				for ($i=0; $i < count($where_field); $i++) {
-					$sql .= $where_field[$i]." LIKE ? ";
+					$sql .= $where_field[$i]." LIKE '%$field_data[$i]%' ";
 				}
 				$exec = $this->db->query($sql, $field_data);
 				$result_data = $exec->result();
@@ -203,9 +202,9 @@ class Dbm extends CI_Model
 		}
 	}
 
-	function update($field_name, $field_data, $where){
+	function update($data_update, $where){
 		if ($this->check_table_name()) {
-			$data_update = $this->create_array_data($field_name, $field_data);
+			// $data_update = $this->create_array_data($field_name, $field_data);
 			$result = $this->db->update($this->table_name, $data_update, $where);
 			// ambil pesan error
 			$err_msg = $this->db->error();
