@@ -57,7 +57,7 @@ class Crud extends CI_Controller{
       'nama_buku' => 'Buku baru'
     );
 
-    $result = $this->dbm->update($data_update, $where);
+    $result = $this->dbm->update($data_update);
     echo $result;
   }
 

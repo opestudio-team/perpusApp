@@ -47,6 +47,41 @@ class Dbm extends CI_Model
 		}
 	}
 
+	function query($sql){
+		$result = $this->db->simple_query($sql);
+		if ($result) {
+			$result = $this->db->query($sql);
+			$row = $result->row();
+			$details = array();
+			if (isset($row)) {
+				$result_code = 0;
+				$result_msg = "Data ditemukan!";
+				$details = array_values($result->result());
+			} else {
+				$result_code = 1;
+				$result_msg = "Data tidak ditemukan!";
+				$details = "";
+			}
+			return json_encode(
+				array(
+					'result_code'=>$result_code,
+					'result_msg'=>$result_msg,
+					'data'=>$details
+				)
+			);
+		} else {
+			$errMsg = $this->db->error();
+			$result_code = $err_msg["code"];
+			$result_msg = $err_msg["message"];
+			return json_encode(
+				array(
+					'result_code'=>2,
+					'result_msg'=>"Proses Open Query gagal. ($result_code) $result_msg"
+				)
+			);
+		}
+	}
+
 	function insert($data = ''){
 		if ($this->check_table_name()) {
 			if (!empty($data)) {
@@ -83,7 +118,7 @@ class Dbm extends CI_Model
 				$result = $this->db->query($sql);
 				$row = $result->row();
 				if (isset($row)) {
-					$result_code = 4;
+					$result_code = 0;
 					$result_msg  = 'Data ditemukan';
 					$result_data = array_values($result->result());
 				} else {
@@ -91,7 +126,7 @@ class Dbm extends CI_Model
 					$result_code = $err_msg['code'];
 					$result_msg	= $err_msg['message'];
 
-					$result_code = 3;
+					$result_code = 1;
 					$result_msg  = 'Data tidak ditemukan. ($result_code) $result_msg';
 				}
 				return json_encode(
@@ -202,10 +237,14 @@ class Dbm extends CI_Model
 		}
 	}
 
-	function update($data_update, $where){
+	function update($data_update, $where = ''){
 		if ($this->check_table_name()) {
-			// $data_update = $this->create_array_data($field_name, $field_data);
-			$result = $this->db->update($this->table_name, $data_update, $where);
+			if ($where == "") {
+				$result = $this->db->update($this->table_name, $data_update);
+			} else {
+				$result = $this->db->update($this->table_name, $data_update, $where);
+			}
+
 			// ambil pesan error
 			$err_msg = $this->db->error();
 			$result_code = $err_msg['code'];
