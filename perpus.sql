@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 09 Mei 2017 pada 07.59
+-- Generation Time: 12 Mei 2017 pada 20.51
 -- Versi Server: 5.7.17-0ubuntu0.16.04.2
 -- PHP Version: 7.0.18-1+deb.sury.org~xenial+1
 
@@ -23,6 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_last_kode`
+--
+
+CREATE TABLE `tb_last_kode` (
+  `last_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_m_buku`
 --
 
@@ -36,6 +46,14 @@ CREATE TABLE `tb_m_buku` (
   `ucode_kategori` varchar(16) NOT NULL,
   `tahun_terbit` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_m_buku`
+--
+
+INSERT INTO `tb_m_buku` (`id_buku`, `kode_buku`, `nama_buku`, `ucode_buku`, `ucode_pengarang`, `ucode_penerbit`, `ucode_kategori`, `tahun_terbit`) VALUES
+(1, 'B0001', 'Buku baru', '', '', '', '', '0000-00-00'),
+(2, 'B0002', 'Buku 2', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -72,6 +90,20 @@ CREATE TABLE `tb_m_pengarang` (
   `id_pengarang` int(11) NOT NULL,
   `ucode_pengarang` varchar(16) NOT NULL,
   `nama_pengarang` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_m_pengembalian`
+--
+
+CREATE TABLE `tb_m_pengembalian` (
+  `id_pengembalian` int(11) NOT NULL,
+  `no_pinjam` varchar(15) NOT NULL,
+  `ucode_buku` varchar(16) NOT NULL,
+  `ucode_siswa` varchar(16) NOT NULL,
+  `tgl_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,6 +166,12 @@ ALTER TABLE `tb_m_pengarang`
   ADD PRIMARY KEY (`id_pengarang`);
 
 --
+-- Indexes for table `tb_m_pengembalian`
+--
+ALTER TABLE `tb_m_pengembalian`
+  ADD PRIMARY KEY (`id_pengembalian`);
+
+--
 -- Indexes for table `tb_m_pinjam`
 --
 ALTER TABLE `tb_m_pinjam`
@@ -153,7 +191,7 @@ ALTER TABLE `tb_m_user`
 -- AUTO_INCREMENT for table `tb_m_buku`
 --
 ALTER TABLE `tb_m_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_m_kategori`
 --
@@ -169,6 +207,11 @@ ALTER TABLE `tb_m_penerbit`
 --
 ALTER TABLE `tb_m_pengarang`
   MODIFY `id_pengarang` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_m_pengembalian`
+--
+ALTER TABLE `tb_m_pengembalian`
+  MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_m_pinjam`
 --
