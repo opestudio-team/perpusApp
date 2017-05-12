@@ -58,7 +58,8 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session','user_agent','routines','template','rousecurity','password');
+$autoload['libraries'] = array('session','user_agent','routines','template',
+                               'rousecurity','password','kode');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +133,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('dbm','roudbmodel');
+$autoload['model'] = array('dbm');

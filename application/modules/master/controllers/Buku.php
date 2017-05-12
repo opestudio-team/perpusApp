@@ -19,6 +19,7 @@
         'title' => 'Master Buku',
       ));
       $this->template->render('master_buku_view');
+      // echo $this->kode->generate('Buku Pemrograman PHP');
     }
 
     public function tambah(){
