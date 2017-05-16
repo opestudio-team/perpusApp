@@ -15,7 +15,7 @@ class Kode
     $exp = explode(' ', $str);
 
     // cek last id kode
-    $query = "SELECT MAX(last_id) AS id FROM tb_last_kode";
+    $query = "SELECT MAX(last_id) AS id FROM tb_last_kode WHERE id_name='kode_produk'";
     $cek = $this->CI->dbm->query($query);
     $result = json_decode($cek, TRUE);
     $id = $result['data'][0]['id'];
