@@ -59,7 +59,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 $autoload['libraries'] = array('session','user_agent','routines','template',
-                               'rousecurity','password','kode');
+                               'rousecurity','password','kode','Uniquecode');
 
 /*
 | -------------------------------------------------------------------

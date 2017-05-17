@@ -21,17 +21,20 @@ class Uniquecode
     $code = $result['data'][0]['id_code'];
 
     // update last id
-    $this->CI->dbm->set_table('tb_last_kode');
+    $this->CI->dbm->set_table('tb_uniq_code');
     $data_update = array(
       'last_id' => $id+1
     );
+    $where = array(
+      'code_name'=>$str
+    );
 
-    $update = $this->CI->dbm->update($data_update);
+    $update = $this->CI->dbm->update($data_update, $where);
     $result = json_decode($cek, TRUE);
     $result_code = $result['result_code'];
 
     if ($result_code == 0) {
-      return $product_code . substr($numb,0,-strlen($id)) . $id;
+      return $code . $code+1 . strrev($code+1)+1 . substr($numb,0,-strlen($id)) . $id;
     }
 
   }
