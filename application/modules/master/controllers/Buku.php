@@ -15,11 +15,12 @@
     }
 
     public function index(){
-      $this->template->set(array(
-        'title' => 'Master Buku',
-      ));
-      $this->template->render('master_buku_view');
+      // $this->template->set(array(
+      //   'title' => 'Master Buku',
+      // ));
+      // $this->template->render('master_buku_view');
       // echo $this->kode->generate('Buku Pemrograman PHP');
+      echo $this->uniquecode->generate('penerbit');
     }
 
     public function tambah(){
@@ -42,13 +43,13 @@
       $kode_buku = $this->kode->generate($nama_buku);
 
       /* generate ucode (unique code) */
-      // $ucode_buku = $this->ucode->generate();
+      $ucode_buku = $this->uniquecode->generate('buku');
 
       /* set data insert */
       $data = array(
         'kode_buku' => $kode_buku,
         'nama_buku' => $nama_buku,
-        // 'ucode_buku' => $ucode_buku,
+        'ucode_buku' => $ucode_buku,
         'tahun_terbit' => $tahun_terbit,
         'ucode_penerbit' => $penerbit,
         'ucode_pengarang' => $pengarang,
