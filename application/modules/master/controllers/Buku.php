@@ -39,14 +39,14 @@
       $kategori         = $this->input->post('kategori');
 
       /* generate kode Buku */
-      // $kode_buku = $this->kode->generate($nama_buku);
+      $kode_buku = $this->kode->generate($nama_buku);
 
       /* generate ucode (unique code) */
       // $ucode_buku = $this->ucode->generate();
 
       /* set data insert */
       $data = array(
-        // 'kode_buku' => $kode_buku,
+        'kode_buku' => $kode_buku,
         'nama_buku' => $nama_buku,
         // 'ucode_buku' => $ucode_buku,
         'tahun_terbit' => $tahun_terbit,
