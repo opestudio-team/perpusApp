@@ -7,7 +7,7 @@ class Template
 {
 	var $template_data = '';
 
-	protected $template = '';
+	protected $template = 'template/template';
 
 	/*
 	set template utama

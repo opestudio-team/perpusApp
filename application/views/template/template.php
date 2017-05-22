@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/libs/css/login.style.css');?>">
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/plugins/font-awesome/css/font-awesome.css');?>">
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/plugins/normalize/normalize.css');?>">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/plugins/pure/pure-min.css');?>" crossorigin="anonymous">
     <style>
       .row {
         margin-right: 0 !important;
@@ -37,25 +37,27 @@
             <ul class="sidebar-list-menu" id="accordion">
                 <!--<li class="list-head">Head</li>-->
                 <li><a href='#'><i class="fa fa-university"></i> Dashboard</a></li>
-                <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-bookmark"></i> Components <i class="fa fa-angle-right pull-right"></i></a>
+                <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-bookmark"></i> Master <i class="fa fa-angle-right pull-right"></i></a>
                     <ul id="collapseOne" class="panel-collapse collapse">
-                        <li><a href='#'><i class="fa fa-bar-chart"></i> Panel</a></li>
-                        <li><a href='#'><i class="fa fa-wpforms"></i> Form</a></li>
+                        <li><a href='#'><i class="fa fa-bar-chart"></i> Buku</a></li>
+                        <li><a href='#'><i class="fa fa-wpforms"></i> Pengarang</a></li>
+                        <li><a href='#'><i class="fa fa-wpforms"></i> Penerbit</a></li>
+                        <li><a href='#'><i class="fa fa-wpforms"></i> Kategori</a></li>
+                        <li><a href='#'><i class="fa fa-wpforms"></i> Siswa</a></li>
                     </ul>
                 </li>
-                <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-code"></i> Plugins <i class="fa fa-angle-right pull-right"></i></a>
+                <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-code"></i> Transaksi <i class="fa fa-angle-right pull-right"></i></a>
                     <ul id="collapseTwo" class="panel-collapse collapse">
-                        <li><a href='#'><i class="fa fa-area-chart"></i> Chart</a></li>
-                        <li><a href='#'><i class="fa fa-calendar"></i> Calendar</a></li>
-                        <li><a href='#'><i class="fa fa-map"></i> Maps</a></li>
+                        <li><a href='#'><i class="fa fa-area-chart"></i> Peminjaman Buku</a></li>
+                        <li><a href='#'><i class="fa fa-calendar"></i> Pengembalian Buku</a></li>
                     </ul>
                 </li>
-                <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3"><i class="fa fa-copy"></i> Pages <i class="fa fa-angle-right pull-right"></i></a>
+                <!-- <li><a id="collapse-menu" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3"><i class="fa fa-copy"></i> Pages <i class="fa fa-angle-right pull-right"></i></a>
                     <ul id="collapse3" class="panel-collapse collapse">
                         <li><a href='#'><i class="fa fa-warning"></i> Error (404)</a></li>
                     </ul>
                 </li>
-                <li><a href='#'><i class="fa fa-envelope-o"></i> Pesan <span class="label label-primary pull-right bg-red">4</span></a></li>
+                <li><a href='#'><i class="fa fa-envelope-o"></i> Pesan <span class="label label-primary pull-right bg-red">4</span></a></li> -->
             </ul>
             </section>
 
@@ -96,7 +98,7 @@
                 </div>
             </div>
             <div class="content">
-                <div class="o-row">
+                <!-- <div class="o-row">
                     <div class="box box-3">
                       <div class="box box__count box--blue">
                         2
@@ -121,7 +123,7 @@
                         box
                       </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="o-row breadcrumb">Dashboard &rsaquo; Setting</div>
                 <?php echo $contents; ?>
             </div>
