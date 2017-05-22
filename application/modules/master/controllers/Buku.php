@@ -15,12 +15,12 @@
     }
 
     public function index(){
-      // $this->template->set(array(
-      //   'title' => 'Master Buku',
-      // ));
-      // $this->template->render('master_buku_view');
+      $this->template->set(array(
+        'title' => 'Master Buku',
+      ));
+      $this->template->render('master_buku_view');
       // echo $this->kode->generate('Buku Pemrograman PHP');
-      echo $this->uniquecode->generate('penerbit');
+      // echo $this->uniquecode->generate('penerbit');
     }
 
     public function tambah(){
@@ -56,11 +56,29 @@
         'ucode_kategori' => $karegori
       );
 
+      /* set tabel */
+      $this->dbm->set_table('tb_m_buku');
+
       /* insert ke Database */
-      $result = $this->dbm->insert($data);
+      $insert = $this->dbm->insert($data);
+      $result = json_decode($insert,TRUE);
+
+      $result_code = $result['result_code'];
+      if ($result_code == 0) {
+        # insert success
+      } else {
+        # insert failed
+      }
+
     }
 
     function prosesKoreksi(){
+      /* ambil data dari kiriman AJAX */
+      $nama_buku        = $this->input->post('nama_buku');
+      $pengarang        = $this->input->post('pengarang');
+      $tahun_terbit     = $this->input->post('tahun_terbit');
+      $penerbit         = $this->input->post('penerbit');
+      $kategori         = $this->input->post('kategori');
 
     }
   }

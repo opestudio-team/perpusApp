@@ -104,3 +104,10 @@ DEBUG - 2017-05-17 14:56:17 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2017-05-17 14:56:17 --> Config file loaded: C:\xampp\htdocs\perpusApp\application\config/opestudio.php
 DEBUG - 2017-05-17 14:56:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2017-05-17 19:56:17 --> Total execution time: 0.2412
+DEBUG - 2017-05-17 15:05:24 --> UTF-8 Support Enabled
+DEBUG - 2017-05-17 15:05:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2017-05-17 15:05:24 --> Config file loaded: C:\xampp\htdocs\perpusApp\application\config/opestudio.php
+DEBUG - 2017-05-17 15:05:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2017-05-17 20:05:24 --> File loaded: C:\xampp\htdocs\perpusApp\application\modules/master/views/master_buku_view.php
+DEBUG - 2017-05-17 20:05:24 --> File loaded: C:\xampp\htdocs\perpusApp\application\modules/master/views/master_buku_view.php
+DEBUG - 2017-05-17 20:05:24 --> Total execution time: 0.1681
