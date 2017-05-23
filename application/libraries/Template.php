@@ -32,9 +32,9 @@ class Template
 	function breadcrumb($status = FALSE){
 		if ($status) {
 			$uri = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-      $uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
-      $uri = explode('//', $uri);
-      $uri = explode('/', $uri[1]);
+			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
+			$uri = explode('//', $uri);
+			$uri = explode('/', $uri[1]);
 
 			$str = "Dashboard ";
 			for ($i=3; $i < count($uri); $i++) {
@@ -75,7 +75,7 @@ class Template
 
 		$this->set(
 			$this->template_data += array(
-				'contents' => $this->CI->load->view($view, $this->template_data, TRUE), 
+				'contents' => $this->CI->load->view($view, $this->template_data, TRUE),
 			)
 		);
 
