@@ -1,4 +1,3 @@
 <?php
-  // echo $title."<br/>";
-  // echo "$tes";
+  // echo $breadcrumb;
 ?>
