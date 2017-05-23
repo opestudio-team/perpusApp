@@ -124,7 +124,9 @@
                       </div>
                     </div>
                 </div> -->
-                <div class="o-row breadcrumb">Dashboard &rsaquo; Setting</div>
+                <?php if(isset($breadcrumb)){?>
+                  <div class="o-row breadcrumb"><?= $breadcrumb?></div>
+                <?php } ?>
                 <?php echo $contents; ?>
             </div>
         </div>

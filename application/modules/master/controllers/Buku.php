@@ -18,9 +18,8 @@
       $this->template->set(array(
         'title' => 'Master Buku',
       ));
+      $this->template->breadcrumb(true);
       $this->template->render('master_buku_view');
-      // echo $this->kode->generate('Buku Pemrograman PHP');
-      // echo $this->uniquecode->generate('penerbit');
     }
 
     public function tambah(){
@@ -31,13 +30,29 @@
 
     }
 
-    function prosesTambah(){
-      /* ambil data dari kiriman AJAX */
-      $nama_buku        = $this->input->post('nama_buku');
-      $pengarang        = $this->input->post('pengarang');
-      $tahun_terbit     = $this->input->post('tahun_terbit');
-      $penerbit         = $this->input->post('penerbit');
-      $kategori         = $this->input->post('kategori');
+    function simpan(){
+      /* ambil semua data dari post */
+      $data = $this->input->post();
+
+      /* cek data kosong atau tidak */
+      if (isset($data)) {
+        /* cek jenis proses */
+        if ($data['jns_proses'] == 'baru') {
+          $proses = $this->prosesTambah($data);
+        } else {
+          $proses = $this->prosesKoreksi($data);
+        }
+      }
+
+      $this->output->set_content_type('application/json')->set_output($proses);
+    }
+
+    function prosesTambah($data){
+      $nama_buku        = $data['nama_buku'];
+      $pengarang        = $data['pengarang'];
+      $tahun_terbit     = $data['tahun_terbit'];
+      $penerbit         = $data['penerbit'];
+      $kategori         = $data['kategori'];
 
       /* generate kode Buku */
       $kode_buku = $this->kode->generate($nama_buku);
@@ -66,19 +81,24 @@
       $result_code = $result['result_code'];
       if ($result_code == 0) {
         # insert success
+        $msg = "Insert success!";
       } else {
         # insert failed
+        $msg = "Insert failed!";
       }
 
+      return json_encode(array(
+        'result_code' => $result_code,
+        'result_msg' => $msg
+      ));
     }
 
-    function prosesKoreksi(){
-      /* ambil data dari kiriman AJAX */
-      $nama_buku        = $this->input->post('nama_buku');
-      $pengarang        = $this->input->post('pengarang');
-      $tahun_terbit     = $this->input->post('tahun_terbit');
-      $penerbit         = $this->input->post('penerbit');
-      $kategori         = $this->input->post('kategori');
+    function prosesKoreksi($data){
+      $nama_buku        = $data['nama_buku'];
+      $pengarang        = $data['pengarang'];
+      $tahun_terbit     = $data['tahun_terbit'];
+      $penerbit         = $data['penerbit'];
+      $kategori         = $data['kategori'];
 
     }
   }

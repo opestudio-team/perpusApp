@@ -7,14 +7,15 @@ class Template
 {
 	var $template_data = '';
 
-	protected $template = 'template/template';
+	public $template = 'template/template';
+	protected $breadcrumb = '';
 
 	/*
-	set template utama
-	------------------
-	Gunakan fungsi main ini untuk set template utama jika template yang kamu Gunakan
-	dipecah menjadi beberapa bagian. Jika hanya menggunakan 1 template utuh, cukup
-	panggil template menggunakan render()
+		set template utama
+		------------------
+		Gunakan fungsi main ini untuk set template utama jika template yang kamu Gunakan
+		dipecah menjadi beberapa bagian. Jika hanya menggunakan 1 template utuh, cukup
+		panggil template menggunakan render()
 	*/
 	function main($main){
 		$this->template = $main;
@@ -25,32 +26,56 @@ class Template
 	}
 
 	/*
-	Gunakan fungsi ini untuk menambah Assets javascript di halaman yg berbeda
+		set breadcrumb:
+			setelah '$this->template->set()' dan sebelum '$this->template->render()'
+	*/
+	function breadcrumb($status = FALSE){
+		if ($status) {
+			$uri = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
+      $uri = explode('//', $uri);
+      $uri = explode('/', $uri[1]);
+
+			$str = "Dashboard ";
+			for ($i=3; $i < count($uri); $i++) {
+				$str .= "&rsaquo; ".ucwords($uri[$i])." ";
+			}
+			$this->breadcrumb = $str;
+			$this->set(
+				$this->template_data += array(
+					'breadcrumb' => $this->breadcrumb
+				)
+			);
+		}
+	}
+
+	/*
+		Gunakan fungsi ini untuk menambah Assets javascript di halaman yg berbeda
 	*/
 	function set_js($js_url){
 		$this->template_data['javascript'] = base_url().$js_url;
 	}
 
 	/*
-	Gunakan fungsi ini untuk menambah Assets CSS di halaman yg berbeda
+		Gunakan fungsi ini untuk menambah Assets CSS di halaman yg berbeda
 	*/
 	function set_css($css_url){
 		$this->template_data['css'] = base_url().$css_url;
 	}
 
 	/*
-	fungsi render() ini harus dipanggil diurutan terakhir ketika hendak load view
-	menggunakan library ini.
+		fungsi render() ini harus dipanggil diurutan terakhir ketika hendak load view
+		menggunakan library ini.
 
-	$view = nama 'contents' view.
-	Harap sesuaikan di mana letak view yang akan dipanggil
+		$view = nama 'contents' view.
+		Harap sesuaikan di mana letak view yang akan dipanggil
 	*/
 	function render($view='', $return=FALSE){
 		$this->CI =& get_instance();
 
 		$this->set(
 			$this->template_data += array(
-				'contents'=> $this->CI->load->view($view, $this->template_data, TRUE)
+				'contents' => $this->CI->load->view($view, $this->template_data, TRUE), 
 			)
 		);
 
