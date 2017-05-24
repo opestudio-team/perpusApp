@@ -8,7 +8,9 @@ class Template
 	var $template_data = '';
 
 	public $template = 'template/template';
-	protected $breadcrumb = '';
+
+	/* set true jika ingin memakai breadcrumb */
+	protected $breadcrumb = true;
 
 	/*
 		set template utama
@@ -29,8 +31,8 @@ class Template
 		set breadcrumb:
 			setelah '$this->template->set()' dan sebelum '$this->template->render()'
 	*/
-	function breadcrumb($status = FALSE){
-		if ($status) {
+	function breadcrumb(){
+		if ($this->breadcrumb) {
 			$uri = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
 			$uri = explode('//', $uri);
@@ -40,10 +42,9 @@ class Template
 			for ($i=3; $i < count($uri); $i++) {
 				$str .= "&rsaquo; ".ucwords($uri[$i])." ";
 			}
-			$this->breadcrumb = $str;
 			$this->set(
 				$this->template_data += array(
-					'breadcrumb' => $this->breadcrumb
+					'breadcrumb' => $str
 				)
 			);
 		}
@@ -72,6 +73,10 @@ class Template
 	*/
 	function render($view='', $return=FALSE){
 		$this->CI =& get_instance();
+
+		if ($this->breadcrumb) {
+			$this->breadcrumb();
+		}
 
 		$this->set(
 			$this->template_data += array(

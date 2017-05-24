@@ -133,11 +133,12 @@
     </div>
 
 <!-- Javascript -->
-<script src="<?=base_url('assets/js/logger.js');?>"></script>
+<script src="<?=base_url('assets/plugins/vanilla/vanilla.js');?>"></script>
 <script src="<?=base_url('assets/plugins/jquery/jquery-3.2.0.min.js');?>"></script>
 <script src="<?=base_url('assets/plugins/DataTables/jQueryUI-1.11.4/jquery-ui.min.js');?>"></script>
 <script src="<?=base_url('assets/plugins/DataTables/datatables.min.js');?>"></script>
 <script src="<?=base_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
+<script src="<?=base_url('assets/js/app.main.js');?>"></script>
 <!-- <script src="https://cdn.ravenjs.com/3.14.0/raven.min.js"></script> -->
 <script>
 $(function(){
@@ -154,7 +155,7 @@ $(function(){
     		$(this).removeClass(' active');
     		$(this).next('ul').collapse('hide');
     	}
-});
+    });
 });
 
 function get(){
