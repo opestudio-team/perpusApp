@@ -10,6 +10,7 @@
     function __construct()
     {
       parent::__construct();
+      $this->load->helper('form');
       /* get id user */
       // $id_user = $this->session->userdata('id_user_'.project);
     }
@@ -22,7 +23,10 @@
     }
 
     public function tambah(){
-
+      $this->template->set(array(
+        'title' => 'Tambah Data Buku',
+      ));
+      $this->template->render('master_buku_view_tambah');
     }
 
     public function koreksi(){
