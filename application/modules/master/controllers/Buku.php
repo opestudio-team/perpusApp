@@ -18,7 +18,6 @@
       $this->template->set(array(
         'title' => 'Master Buku',
       ));
-      $this->template->breadcrumb(true);
       $this->template->render('master_buku_view');
     }
 
@@ -81,10 +80,10 @@
       $result_code = $result['result_code'];
       if ($result_code == 0) {
         # insert success
-        $msg = "Insert success!";
+        $msg = "Berhasil menyimpan data buku!";
       } else {
         # insert failed
-        $msg = "Insert failed!";
+        $msg = "Data buku gagal tersimpan!";
       }
 
       return json_encode(array(
