@@ -1,10 +1,10 @@
 # perpusApp
 
-#Instalasi Database
+<b>#Instalasi Database</b>
 1. Buat database dengan nama 'perpus' (tanpa tanda petik)
 2. Import file perpus.sql
 
-<b>#Aturan Penulisan Kode</b><br/><br/>
+<b>#Aturan Penulisan Kode</b><br/>
 1. Controller<br/>
   a). Nama file dan class controller harus diawali huruf Kapital<br/>
   b). Setiap controller yang dibuat harus mewakili sub-modul tertentu. Misal pada modul 'Master' ingin menambah sub-modul 'User', berarti harus membuat 1 file controller dengan nama User.php<br/>
