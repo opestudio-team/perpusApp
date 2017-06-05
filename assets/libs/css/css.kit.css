@@ -1,0 +1,334 @@
+/*
+  Custom CSS using BEM in class naming standard
+  v0.1
+  ---------------------------------------------
+  Taufiqur Rohman
+  https://github.com/akaope/css-kit
+*/
+
+/**
+ * ul
+*/
+ul{
+  list-style: none;
+}
+li{
+  list-style: none;
+}
+
+input[type=text],input[type=password], textarea, optgroup {
+  padding-left: 10px;
+  width: 100%;
+}
+input[type=text]:focus,input[type=password]:focus, textarea:focus {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #d8d8d8;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #d8d8d8;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #d8d8d8;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #d8d8d8;
+}
+
+/**
+ * input
+ */
+.input__text--standart{
+  height: 34px;
+}
+.input__radio{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 5px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  border-radius: 50%;
+}
+.input__radio:hover {
+  background: #fdb714;
+}
+.input__radio:checked {
+  background: #165686;
+}
+.radio__label{
+  width: 50px !important;
+  margin-left: 10px !important;
+  position: relative;
+}
+
+
+/**
+ * form
+ */
+.form{
+  padding: 0;
+  margin: 0;
+}
+.form__standart{
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.form__input{
+  padding: 0;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+.form__select-option{
+  background-color: #fff;
+}
+.form__submit{
+  padding: 5px 10px;
+  border: 0;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.submit--large{
+  padding: 10px 20px;
+}
+.submit--small{
+  padding: 4px 4px;
+  font-size: 12px
+}
+.submit--color-blue{
+  background-color: #1b8ee2;
+  color: #fff;
+}
+.submit--color-yellow{
+  background-color: #fdb714;
+  color: #fff;
+}
+.submit--color-blue:hover{
+  background-color: rgb(21, 98, 154);
+}
+.submit--color-yellow:hover{
+  background-color: rgb(212, 154, 17);
+}
+.form--horizontal>.grid>.grid__row>.form__label{
+  height: 40px;
+  line-height: 40px;
+  margin-top: 5px;
+}
+.form__label{
+  font-weight: bold;
+}
+.form__label--right{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+.form__label--left{
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+.form__icon{
+  text-align: center;
+}
+.icon--large{
+  margin-top:10px;
+  font-size: 40px
+}
+
+/**
+ * labels
+ */
+.label{
+  padding: 4px;
+  font-size: 11px;
+  color: #fff;
+  text-transform: capitalize;
+}
+.label--default{
+  background: grey;
+}
+.label--green{
+  background-color: green;
+}
+.label--blue{
+  background-color: blue;
+}
+.label--red{
+  background: red
+}
+.label--orange{
+  background: #ffc65d;
+}
+
+/**
+ * card
+ */
+.card{
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 10px;
+  color: #525252;
+  overflow:auto;
+}
+/* card element */
+.card__header{
+  font-weight: bold;
+  padding: 10px;
+  height: 40px;
+  border-bottom: 1px solid #ececec;
+}
+.card__body{
+  padding: 10px
+}
+.card__footer{
+  padding: 10px;
+  height: 40px;
+  border-top: 1px solid #ececec;
+}
+
+/**
+ * grid
+ */
+.grid{
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: auto;
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+.grid>.grid__row{
+  width: 100%;
+  padding-left: -15px;
+  padding-right: -15px;
+  height: auto;
+  overflow: auto;
+}
+.grid__width--12{width: 100%;}
+.grid__width--11{width: 91.66666667%;}
+.grid__width--10{width: 83.33333333%}
+.grid__width--9{width: 75%}
+.grid__width--8{width: 66.66666667%}
+.grid__width--7{width: 58.33333333%}
+.grid__width--6{width: 50%}
+.grid__width--5{width: 41.66666667%}
+.grid__width--4{width: 33.33333333%}
+.grid__width--3{width: 25%}
+.grid__width--2{width: 16.66666667%}
+.grid__width--1{width: 8.33333333%}
+.grid__width--custom{width: 20%}
+
+/* global modifier */
+.bg--white{
+  background-color: rgb(255, 255, 255);
+}
+.bg--grey{
+  background-color: #e4e4e4;
+}
+.bg--blue{
+  background-color: #1b8ee2;
+  color: #fff;
+}
+.padding{
+  float: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.bold{
+  font-weight: bold;
+}
+
+/**
+ * responsive
+ */
+ @media (max-width: 767px) {
+    .grid{
+       float: left;
+       margin: 0;
+    }
+    .form__icon{
+       display: none;
+    }
+    .grid__width--custom{width: 50%}
+    .grid__width--12{width: 100%}
+    .grid__width--11{width: 100%}
+    .grid__width--10{width: 100%}
+    .grid__width--9{width: 100%}
+    .grid__width--8{width: 100%}
+    .grid__width--7{width: 100%}
+    .grid__width--6{width: 100%}
+    .grid__width--5{width: 100%}
+    .grid__width--4{width: 100%}
+    .grid__width--3{width: 25%}
+    .grid__width--2{width: 100%}
+    .grid__width--1{width: 8.33333333%}
+    .card>.card__body>.grid>.grid__row>.grid__width--6{
+      width: 50%;
+    }
+    .form__submit{
+      width: 100%;
+    }
+    input[type=text],input[type=password], textarea, optgroup {
+      border: 1px solid #ccc;
+      height: 40px;
+    }
+}
+
+@media (max-width: 580px) {
+    .responsive-table{
+      display: block;
+      text-align: left !important;
+    }
+
+    #responsive-table thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    #responsive-table tr { border: 1px solid #ccc; }
+
+    #responsive-table td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align:left;
+    }
+
+    #responsive-table td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align:left;
+      font-weight: bold;
+    }
+
+    #responsive-table td:before { content: attr(data-title); }
+}
