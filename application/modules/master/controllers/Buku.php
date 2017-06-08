@@ -18,13 +18,14 @@
     public function index(){
       $this->template->set(array(
         'title' => 'Master Buku',
-      ));
+      )); 
       $this->template->render('master_buku_view');
     }
 
     public function tambah(){
       $this->template->set(array(
         'title' => 'Tambah Data Buku',
+        'modul' => 'Buku'
       ));
       $this->template->render('master_buku_view_tambah');
     }

@@ -1,9 +1,12 @@
-<?php
-  $attributes = array('id' => 'form_tambah');
-  echo form_open('master/buku/simpan', $attributes);
-  echo "Nama Buku";
-  echo form_input('nama_buku');
-  echo "Nama Pengarang";
-  echo form_input('nama_pengarang');
-  echo form_close();
-?>
+<div class="grid">
+  <div class="grid__row">
+    <div class="grid__width--12">
+      <div class="card bg--white">
+        <div class="card__header">
+          Tambah Data <?=$modul;?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -5,7 +5,7 @@
  * -----------------------
  * Author/Creator				: Taufiqur Rohman
  * DBM Version 					: 0.1
- * Codeigniter Version	: 3
+ * Codeigniter Version			: 3
  */
 
 class Dbm extends CI_Model

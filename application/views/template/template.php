@@ -5,6 +5,7 @@
 	  <title><?php echo $title;?></title>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/libs/css/custom.style.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/libs/css/css.kit.css');?>">
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/plugins/bootstrap/css/bootstrap.min.css');?>" />
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/plugins/DataTables/datatables.min.css');?>" />
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/libs/css/style.min.css');?>">
