@@ -32,7 +32,11 @@ class Template
 			setelah '$this->template->set()' dan sebelum '$this->template->render()'
 	*/
 	function breadcrumb(){
-		if ($this->breadcrumb) {
+		if(array_key_exists('breadcrumb', $this->template_data)){
+			$this->breadcrumb = $this->template_data['breadcrumb'];
+		} 
+
+		if($this->breadcrumb) {
 			$uri = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			$uri = htmlspecialchars( $uri, ENT_QUOTES, 'UTF-8' );
 			$uri = explode('//', $uri);
@@ -42,9 +46,14 @@ class Template
 			for ($i=3; $i < count($uri); $i++) {
 				$str .= "&rsaquo; ".ucwords($uri[$i])." ";
 			}
-			$this->template_data['breadcrumb'] = $str;
-			$this->set($this->template_data);
-		}
+			// $this->template_data['breadcrumb'] = $str;
+			// $this->set($this->template_data);
+			$this->set(
+				$this->template_data += array(
+					'breadcrumb' => $str,
+				)
+			);
+		}	
 	}
 
 	/*

@@ -125,7 +125,7 @@
                       </div>
                     </div>
                 </div> -->
-                <?php if(isset($breadcrumb)){?>
+                <?php if($breadcrumb!=""){?>
                   <div class="o-row breadcrumb"><?= $breadcrumb?></div>
                 <?php } ?>
                 <?php echo $contents; ?>

@@ -12,7 +12,8 @@ class Dashboard extends CI_Controller{
 
 	function index(){
 		$this->template_conf = array(
-			'title' => 'Dashboard Template'
+			'title' => 'Dashboard Template',
+			// 'breadcrumb' => false
 		);
 
     	$this->template->set($this->template_conf);
