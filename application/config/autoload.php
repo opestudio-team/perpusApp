@@ -104,7 +104,7 @@ $autoload['helper'] = array('url','captcha','path','html');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('opestudio');
+$autoload['config'] = array('appconst');
 
 /*
 | -------------------------------------------------------------------
