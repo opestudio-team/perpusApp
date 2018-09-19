@@ -42,11 +42,8 @@ class Template
 			for ($i=3; $i < count($uri); $i++) {
 				$str .= "&rsaquo; ".ucwords($uri[$i])." ";
 			}
-			$this->set(
-				$this->template_data += array(
-					'breadcrumb' => $str
-				)
-			);
+			$this->template_data['breadcrumb'] = $str;
+			$this->set($this->template_data);
 		}
 	}
 
