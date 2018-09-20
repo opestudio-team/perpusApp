@@ -10,7 +10,7 @@
             </div>
             <div class="o-panel-body">
                 <div class="table-responsive table-full">
-                    <table id="tableList" class="pure-table pure-table-bordered">
+                    <table id="tableList" class="otable-full pure-table pure-table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">Kode Barang</th>

@@ -19,8 +19,13 @@ class Register extends CI_Controller
 
 	function test(){
 		// $check = $this->routines->verifyHash('ope', '$2y$11$540c60dcc03eda100c610OIPmb1xAz2KuJ5KxGgACiNahp0ZDb4cK');
-		$result = $this->routines->hashString('ope');
+		$result = $this->password->generate('ope');
 		echo $result."<br/>";
-		echo md5(md5(strrev('ope').private_key));
+		echo "MD5: ".md5(md5(strrev('ope').private_key));
+	}
+
+	function verify(){
+		$check = $this->password->verify('ope', '$2y$11$a1e47046adb8f95f701beuydDs1WYmOWtnZpT2Eh4P1w.AdnWI2Vy');
+		print_r($check);
 	}
 }

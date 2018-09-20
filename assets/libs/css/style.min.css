@@ -509,6 +509,7 @@ img.avatar-pict {
 /* table */
 .otable-full {
     margin-bottom: 0;
+    width: 100%;
 }
 /* table */
 
@@ -549,10 +550,10 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
     line-height: 1.42857;
 }
 .form-group{
-	padding: 10px;
+  padding: 10px;
 }
 .hrzn-group{
-	margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 .hrzn-title {
     font-size: 14px;
@@ -562,7 +563,7 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
     color: #585858;
 }
 .hrzn-input{
-	margin: 0;
+  margin: 0;
 }
 .btn-submit {
     padding-left: 25px;
@@ -584,18 +585,18 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
 
 #style-4::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
 }
 
 #style-4::-webkit-scrollbar
 {
-	width: 10px;
-	background-color: #F5F5F5;
+  width: 10px;
+  background-color: #F5F5F5;
 }
 
 #style-4::-webkit-scrollbar-thumb
 {
-	background-color: #000000;
-	border: 2px solid #555555;
+  background-color: #000000;
+  border: 2px solid #555555;
 }

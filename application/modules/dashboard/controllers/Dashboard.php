@@ -7,17 +7,18 @@ class Dashboard extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
-		$this->ci =& get_instance();
+		$this->ci =& get_instance();		
 	}
 
 	function index(){
+		$template = new Template();
+
 		$this->template_conf = array(
 			'title' => 'Dashboard Template',
-			// 'breadcrumb' => false
 		);
 
-    	$this->template->set($this->template_conf);
-		$this->template->render('dashboard_view');
+    	$template->config($this->template_conf);
+		$template->render('dashboard_view');
 	}
 
 }

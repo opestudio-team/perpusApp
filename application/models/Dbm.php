@@ -35,6 +35,18 @@ class Dbm extends CI_Model
 		return $array;
 	}
 
+	function array_to_str($arr){
+		if(isset($arr)){
+			if(count($arr)>1){
+				$str = implode($arr, ",");
+			} else {
+				$str = $arr[0];
+			}
+		}
+				
+		return $str;
+	}
+
 	function set_table($tbname){
 		$this->table_name = $tbname;
 	}
@@ -91,8 +103,10 @@ class Dbm extends CI_Model
 				$result_msg	= $err_msg['message'];
 
 				if ($result_code == 0) {
+					$result_code = 0;
 					$result_msg = 'Proses insert data berhasil';
 				} else {
+					$result_code = 1;
 					$result_msg = 'Proses insert gagal. ($result_code) $result_msg';
 				}
 				return json_encode(
@@ -111,36 +125,36 @@ class Dbm extends CI_Model
 		}
 	}
 
-	function get($tbname = ""){
+	function get($tbname="", $select=array()){
 		if ($tbname != "") {
-			if ($this->select != "") {
-				$sql = "SELECT $this->select FROM $tbname";
-				$result = $this->db->query($sql);
-				$row = $result->row();
-				if (isset($row)) {
-					$result_code = 0;
-					$result_msg  = 'Data ditemukan';
-					$result_data = array_values($result->result());
-				} else {
-					$err_msg = $this->db->error();
-					$result_code = $err_msg['code'];
-					$result_msg	= $err_msg['message'];
-
-					$result_code = 1;
-					$result_msg  = 'Data tidak ditemukan. ($result_code) $result_msg';
-				}
-				return json_encode(
-					array(
-						'result_code'=>$result_code,
-						'result_msg'=>$result_msg,
-						'data'=>$result_data
-					)
-				);
+			if(isset($select)){
+				$select = $this->array_to_str($select);
 			} else {
-				$msg = "Tidak ada kolom yang dipilih dari tabel <b>'$tbname'</b>. <br/>
-								Gunakan <b>\$this->dbm->select()</b> untuk menentukan kolom mana saja yang ingin anda pilih.";
-				$this->show_error_msg($msg);
+				$select = "*";
 			}
+	
+			$sql = "SELECT $select FROM $tbname";
+			$result = $this->db->query($sql);
+			$row = $result->row();
+			if (isset($row)) {
+				$result_code = 0;
+				$result_msg  = 'Data ditemukan';
+				$result_data = array_values($result->result());
+			} else {
+				$err_msg = $this->db->error();
+				$result_code = $err_msg['code'];
+				$result_msg	= $err_msg['message'];
+
+				$result_code = 1;
+				$result_msg  = 'Data tidak ditemukan. ($result_code) $result_msg';
+			}
+			return json_encode(
+				array(
+					'result_code'=>$result_code,
+					'result_msg'=>$result_msg,
+					'data'=>$result_data
+				)
+			);		
 		} else {
 			$msg = "Tidak ada tabel yang dipilih.";
 			$this->show_error_msg($msg);

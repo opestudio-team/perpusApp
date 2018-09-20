@@ -25,7 +25,7 @@ getJSON = function(url, next){
   });
 }
 
-post = function(url, data){
+postJSON = function(url, data){
   var post = new XMLHttpRequest();
   post.open("POST", url, true);
   post.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");

@@ -8,9 +8,10 @@ class Template
 	var $template_data = '';
 
 	public $template = 'template/template';
+	public $fullpage = false;
 
 	/* set true jika ingin memakai breadcrumb */
-	protected $breadcrumb = true;
+	protected $breadcrumb = false;
 
 	/*
 		set template utama
@@ -23,13 +24,13 @@ class Template
 		$this->template = $main;
 	}
 
-	function set($dataset){
+	function config($dataset){
 		$this->template_data = $dataset;
 	}
 
 	/*
 		set breadcrumb:
-			setelah '$this->template->set()' dan sebelum '$this->template->render()'
+			setelah '$this->template->config()' dan sebelum '$this->template->render()'
 	*/
 	function breadcrumb(){
 		if(array_key_exists('breadcrumb', $this->template_data)){
@@ -46,9 +47,8 @@ class Template
 			for ($i=3; $i < count($uri); $i++) {
 				$str .= "&rsaquo; ".ucwords($uri[$i])." ";
 			}
-			// $this->template_data['breadcrumb'] = $str;
-			// $this->set($this->template_data);
-			$this->set(
+
+			$this->config(
 				$this->template_data += array(
 					'breadcrumb' => $str,
 				)
@@ -71,7 +71,7 @@ class Template
 	}
 
 	/*
-		fungsi render() ini harus dipanggil diurutan terakhir ketika hendak load view
+		fungsi render() ini harus dipanggil diurutan terakhir ketika ingin load view
 		menggunakan library ini.
 
 		$view = nama 'contents' view.
@@ -84,13 +84,17 @@ class Template
 			$this->breadcrumb();
 		}
 
-		$this->set(
+		$this->config(
 			$this->template_data += array(
 				'contents' => $this->CI->load->view($view, $this->template_data, TRUE),
 			)
 		);
 
-		if ($this->template == '' || $this->template == NULL) {
+		if(array_key_exists('fullpage', $this->template_data)){
+			$this->fullpage = $this->template_data['fullpage'];
+		}
+
+		if($this->fullpage){
 			return $this->CI->load->view(
 				$view,
 				$this->template_data,

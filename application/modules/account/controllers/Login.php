@@ -7,20 +7,32 @@
 class Login extends CI_Controller
 {
 
+	public $template_conf = array();
+
 	function __construct(){
 		parent::__construct();
 		$this->ci =& get_instance();
 	}
 
 	function index(){
-		$this->template->render('login_view','login_view');
+		$template = new Template();
+
+		$this->template_conf = array(
+			'fullpage' => TRUE,
+			'title' => 'Login',
+		);
+
+    	$template->config($this->template_conf);
+		$template->render('login_view');
 	}
 
-	function do_login(){
+	function dologin(){
+		$sec = new Appsecurity();
+
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		$check = $this->rousecurity->checkLogin('opeganteng','ope');
+		$check = $sec->check_login('ope','ope');
 
 		$result_check = json_decode($check, TRUE);
 		$result_code = $result_check['result_code'];
@@ -37,6 +49,8 @@ class Login extends CI_Controller
 		} else {
 
 		}
-		echo $check;
+
+		log_message('debug', 'login check: '.json_encode($check));
+		print_r($check);
 	}
 }

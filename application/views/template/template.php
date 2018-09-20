@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="content">
-                <!-- <div class="o-row">
+                <div class="o-row">
                     <div class="box box-3">
                       <div class="box box__count box--blue">
                         2
@@ -124,8 +124,8 @@
                         box
                       </div>
                     </div>
-                </div> -->
-                <?php if($breadcrumb!=""){?>
+                </div>
+                <?php if(isset($breadcrumb)){?>
                   <div class="o-row breadcrumb"><?= $breadcrumb?></div>
                 <?php } ?>
                 <?php echo $contents; ?>
@@ -144,7 +144,7 @@
 <script>
 $(function(){
     // Raven.config('https://826c61a473584e0ab32b1c839f54acda@sentry.io/156175').install();
-    get();
+    // get();
     $('body').on('click', '#collapse-menu', function() {
     	if(!$(this).hasClass('active')){
     		$('.collapse').collapse('hide');
