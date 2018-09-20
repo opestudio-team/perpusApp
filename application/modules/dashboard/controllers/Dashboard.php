@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller{
 
 		$this->template_conf = array(
 			'title' => 'Dashboard Template',
+			'breadcrumb' => true
 		);
 
     	$template->config($this->template_conf);
